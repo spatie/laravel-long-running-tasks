@@ -2,9 +2,9 @@
 
 namespace Spatie\LongRunningTasks;
 
-use Spatie\LongRunningTasks\Commands\RestartPendingTasksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LongRunningTasks\Commands\RestartPendingTasksCommand;
 
 class LongRunningTasksServiceProvider extends PackageServiceProvider
 {

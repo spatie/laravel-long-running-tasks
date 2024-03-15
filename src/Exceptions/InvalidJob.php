@@ -2,8 +2,8 @@
 
 namespace Spatie\LongRunningTasks\Exceptions;
 
-use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
 use Exception;
+use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
 
 class InvalidJob extends Exception
 {

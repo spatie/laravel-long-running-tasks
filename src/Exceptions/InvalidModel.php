@@ -2,8 +2,8 @@
 
 namespace Spatie\LongRunningTasks\Exceptions;
 
-use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 use Exception;
+use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 
 class InvalidModel extends Exception
 {

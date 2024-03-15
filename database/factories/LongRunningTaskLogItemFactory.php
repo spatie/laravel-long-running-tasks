@@ -2,9 +2,9 @@
 
 namespace Spatie\LongRunningTasks\Database\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LongRunningTaskLogItemFactory extends Factory
 {

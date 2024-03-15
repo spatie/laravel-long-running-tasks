@@ -3,11 +3,11 @@
 namespace Spatie\LongRunningTasks;
 
 use Carbon\Carbon;
+use Exception;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Enums\TaskResult;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 use Spatie\LongRunningTasks\Support\Config;
-use Exception;
 
 abstract class LongRunningTask
 {

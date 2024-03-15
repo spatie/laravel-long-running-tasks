@@ -2,8 +2,8 @@
 
 namespace Spatie\LongRunningTasks\Exceptions;
 
-use Spatie\LongRunningTasks\LongRunningTask;
 use Exception;
+use Spatie\LongRunningTasks\LongRunningTask;
 
 class InvalidTask extends Exception
 {
