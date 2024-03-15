@@ -1,4 +1,4 @@
-# Monitor long running tasks in a Laravel app
+# Handle long running tasks in a Laravel app
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-long-running-tasks.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-long-running-tasks)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-long-running-tasks/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/laravel-long-running-tasks/actions?query=workflow%3Arun-tests+branch%3Amain)
