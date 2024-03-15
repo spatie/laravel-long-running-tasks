@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Queue;
 use Spatie\LongRunningTasks\Enums\TaskResult;
 use Spatie\LongRunningTasks\Exceptions\InvalidModel;
 use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
@@ -7,7 +8,6 @@ use Spatie\LongRunningTasks\LongRunningTask;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 use Spatie\LongRunningTasks\Support\Config;
 use Spatie\LongRunningTasks\Tests\TestSupport\LongRunningTasks\LongRunningTestTask;
-use Illuminate\Support\Facades\Queue;
 
 it('can handle a valid custom model', function () {
     $customModel = new class extends LongRunningTaskLogItem

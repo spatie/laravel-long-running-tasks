@@ -2,12 +2,12 @@
 
 namespace Spatie\LongRunningTasks\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Exceptions\InvalidTask;
 use Spatie\LongRunningTasks\LongRunningTask;
 use Spatie\LongRunningTasks\Support\Config;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class LongRunningTaskLogItem extends Model
 {

@@ -1,9 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Queue;
 use Spatie\LongRunningTasks\Commands\RestartPendingTasksCommand;
 use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
-use Illuminate\Support\Facades\Queue;
 
 it('can restart pending tasks', function () {
     Queue::fake();

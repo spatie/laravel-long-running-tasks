@@ -2,10 +2,10 @@
 
 namespace Spatie\LongRunningTasks\Commands;
 
+use Illuminate\Console\Command;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 use Spatie\LongRunningTasks\Support\Config;
-use Illuminate\Console\Command;
 
 class RestartPendingTasksCommand extends Command
 {

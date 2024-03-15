@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Queue;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Enums\TaskResult;
 use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
 use Spatie\LongRunningTasks\LongRunningTask;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 use Spatie\LongRunningTasks\Tests\TestSupport\LongRunningTasks\LongRunningTestTask;
-use Illuminate\Support\Facades\Queue;
 use Spatie\TestTime\TestTime;
 
 it('can create create a pending task', function () {

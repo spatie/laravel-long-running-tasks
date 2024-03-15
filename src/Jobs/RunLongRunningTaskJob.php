@@ -2,6 +2,13 @@
 
 namespace Spatie\LongRunningTasks\Jobs;
 
+use Exception;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Enums\TaskResult;
 use Spatie\LongRunningTasks\Events\DispatchingNewRunEvent;
@@ -11,13 +18,6 @@ use Spatie\LongRunningTasks\Events\TaskRunEndedEvent;
 use Spatie\LongRunningTasks\Events\TaskRunStartingEvent;
 use Spatie\LongRunningTasks\LongRunningTask;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
-use Exception;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 
 class RunLongRunningTaskJob implements ShouldBeUniqueUntilProcessing, ShouldQueue
 {
