@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create('long_running_task_log_items', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('type');
+            $table->string('status');
+            $table->string('queue');
+            $table->integer('check_frequency_in_seconds');
+            $table->json('meta');
+            $table->timestamp('last_check_started_at')->nullable();
+            $table->timestamp('last_check_ended_at')->nullable();
+            $table->timestamp('stop_checking_at')->nullable();
+            $table->text('latest_exception')->nullable();
+            $table->integer('run_count')->default(0);
+            $table->integer('attempt')->default(1);
+
+            $table->timestamps();
+        });
+    }
+};
