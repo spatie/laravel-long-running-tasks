@@ -107,7 +107,7 @@ class RunLongRunningTaskJob implements ShouldBeUniqueUntilProcessing, ShouldQueu
             ->delay($delay);
     }
 
-    public function uniqueId(): string
+    public function uniqueId(): string|int
     {
         return $this->longRunningTaskLogItem->id;
     }
