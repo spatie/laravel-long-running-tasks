@@ -83,6 +83,19 @@ return [
     'default_check_frequency_in_seconds' => 10,
 
     /*
+     * The default class that implements a strategy for determining the check frequency in seconds.
+     * - `DefaultCheckStrategy` will check the task every `LongRunningTaskLogItem::check_frequency_in_seconds` seconds.
+     * - `StandardBackoffCheckStrategy` will check the task every `LongRunningTaskLogItem::check_frequency_in_seconds` seconds,
+     *    but will increase the frequency with the multipliers 1, 6, 12, 30, 60, with the maximum being 60 times the original frequency.
+     *    With the default check frequency, this translates to 10, 60, 120, 300, and 600 seconds between checks.
+     * - `LinearBackoffCheckStrategy` will check the task every `LongRunningTaskLogItem::check_frequency_in_seconds` seconds,
+     *   but will increase the frequency linearly with each attempt, up to a maximum multiple of 6 times the original frequency.
+     * - `ExponentialBackoffCheckStrategy` will check the task every `LongRunningTaskLogItem::check_frequency_in_seconds` seconds,
+     *   but will increase the frequency exponentially with each attempt, up to a maximum of 6 times the original frequency.
+     */
+    'default_check_strategy_class' => Spatie\LongRunningTasks\Strategies\DefaultCheckStrategy::class,
+
+    /*
      * When a task is not completed in this amount of time,
      * it will not run again, and marked as `didNotComplete`.
      */
@@ -101,7 +114,7 @@ return [
 ];
 ```
 
-This package make use of queues to call tasks again after a certain amount of time. Make sure you've set up [queues](https://laravel.com/docs/10.x/queues) in your Laravel app.
+This package makes use of queues to call tasks again after a certain amount of time. Make sure you've set up [queues](https://laravel.com/docs/10.x/queues) in your Laravel app.
 
 ## Usage
 
@@ -187,6 +200,30 @@ To specify a checking interval on a specific instance of a task, you can use the
 ```php
 MyTask::make()
    ->checkFrequencyInSeconds(30)
+   ->start();
+```
+
+### Customizing the check strategy
+
+By default, the package uses the `DefaultCheckStrategy` to determine the check frequency in seconds, which always returns the value of the `check_frequency_in_seconds` attribute.  
+You can customize the strategy that should be used by changing the value of the `default_check_strategy_class` key in the `long-running-tasks` config file.
+
+You can also specify a strategy on your task itself.
+
+```php
+use Spatie\LongRunningTasks\Strategies\StandardBackoffCheckStrategy;
+
+class MyTask extends LongRunningTask
+{
+    public string $checkStrategy = StandardBackoffCheckStrategy::class;
+}
+```
+
+To specify a check strategy on a specific instance of a task, you can use the `checkStrategy` method.
+
+```php
+MyTask::make()
+   ->checkStrategy(StandardBackoffCheckStrategy::class)
    ->start();
 ```
 
