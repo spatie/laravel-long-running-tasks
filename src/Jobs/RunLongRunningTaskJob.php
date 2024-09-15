@@ -98,7 +98,8 @@ class RunLongRunningTaskJob implements ShouldBeUniqueUntilProcessing, ShouldQueu
 
         $job = new static($this->longRunningTaskLogItem);
 
-        $delay = $this->longRunningTaskLogItem->check_frequency_in_seconds;
+        $task = $this->longRunningTaskLogItem->task();
+        $delay = $task->getCheckStrategy()->checkFrequencyInSeconds($this->longRunningTaskLogItem);
 
         $queue = $this->longRunningTaskLogItem->queue;
 

@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use Exception;
 use Spatie\LongRunningTasks\Enums\LogItemStatus;
 use Spatie\LongRunningTasks\Enums\TaskResult;
+use Spatie\LongRunningTasks\Exceptions\InvalidStrategyClass;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
+use Spatie\LongRunningTasks\Strategies\CheckStrategy;
+use Spatie\LongRunningTasks\Strategies\DefaultCheckStrategy;
 use Spatie\LongRunningTasks\Support\Config;
 
 abstract class LongRunningTask
@@ -35,6 +38,17 @@ abstract class LongRunningTask
     public function queue(string $queue): self
     {
         $this->queue = $queue;
+
+        return $this;
+    }
+
+    /**
+     * @param class-string<CheckStrategy> $checkStrategy
+     * @return $this
+     */
+    public function checkStrategy(string $checkStrategy): self
+    {
+        $this->checkStrategy = $checkStrategy;
 
         return $this;
     }
@@ -98,6 +112,25 @@ abstract class LongRunningTask
         }
 
         return config('long-running-tasks.queue');
+    }
+
+    public function getCheckStrategy(): CheckStrategy
+    {
+        $strategyClass = config('long-running-tasks.default_check_strategy_class', DefaultCheckStrategy::class);
+
+        if (isset($this->checkStrategy)) {
+            $strategyClass = $this->checkStrategy;
+        }
+
+        if (! class_exists($strategyClass)) {
+            throw InvalidStrategyClass::classDoesNotExist($strategyClass);
+        }
+
+        if (! class_implements($strategyClass, CheckStrategy::class)) {
+            throw InvalidStrategyClass::classIsNotAStrategy($strategyClass);
+        }
+
+        return app()->make($strategyClass);
     }
 
     public function stopCheckingAt(): Carbon
