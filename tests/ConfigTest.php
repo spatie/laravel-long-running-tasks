@@ -36,7 +36,7 @@ it('can use a custom model', function () {
 
     config()->set('long-running-tasks.log_model', $customModel::class);
 
-    $task = new class() extends LongRunningTask
+    $task = new class extends LongRunningTask
     {
         public static string $customModel;
 
@@ -60,9 +60,7 @@ it('can use a custom model', function () {
 it('can handle a custom job class', function () {
     $logItem = LongRunningTaskLogItem::factory()->create();
 
-    $customJob = new class($logItem) extends RunLongRunningTaskJob
-    {
-    };
+    $customJob = new class($logItem) extends RunLongRunningTaskJob {};
 
     config()->set('long-running-tasks.task_job', $customJob::class);
 
@@ -76,9 +74,7 @@ it('will use a custom job class', function () {
 
     $logItem = LongRunningTaskLogItem::factory()->create();
 
-    $customJob = new class($logItem) extends RunLongRunningTaskJob
-    {
-    };
+    $customJob = new class($logItem) extends RunLongRunningTaskJob {};
 
     config()->set('long-running-tasks.task_job', $customJob::class);
 

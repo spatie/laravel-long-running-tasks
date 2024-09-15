@@ -25,7 +25,7 @@ abstract class LongRunningTask
 
     public static function make()
     {
-        return new static();
+        return new static;
     }
 
     public function meta(array $meta): self
@@ -43,7 +43,7 @@ abstract class LongRunningTask
     }
 
     /**
-     * @param class-string<CheckStrategy> $checkStrategy
+     * @param  class-string<CheckStrategy>  $checkStrategy
      * @return $this
      */
     public function checkStrategy(string $checkStrategy): self

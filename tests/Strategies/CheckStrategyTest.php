@@ -1,11 +1,11 @@
 <?php
 
-use Spatie\LongRunningTasks\Strategies\LinearBackoffCheckStrategy;
-use Spatie\LongRunningTasks\Strategies\ExponentialBackoffCheckStrategy;
 use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
+use Spatie\LongRunningTasks\Strategies\ExponentialBackoffCheckStrategy;
+use Spatie\LongRunningTasks\Strategies\LinearBackoffCheckStrategy;
 
 it('implements a linear backoff strategy', function () {
-    $strategy = new LinearBackoffCheckStrategy();
+    $strategy = new LinearBackoffCheckStrategy;
 
     $logItem = LongRunningTaskLogItem::factory()->create();
 
@@ -34,7 +34,7 @@ it('implements a linear backoff strategy', function () {
 });
 
 it('implements an exponential backoff strategy', function () {
-    $strategy = new ExponentialBackoffCheckStrategy();
+    $strategy = new ExponentialBackoffCheckStrategy;
 
     $logItem = LongRunningTaskLogItem::factory()->create();
 
@@ -60,7 +60,7 @@ it('implements an exponential backoff strategy', function () {
 });
 
 it('implements a standard backoff strategy', function () {
-    $strategy = new Spatie\LongRunningTasks\Strategies\StandardBackoffCheckStrategy();
+    $strategy = new Spatie\LongRunningTasks\Strategies\StandardBackoffCheckStrategy;
 
     $logItem = LongRunningTaskLogItem::factory()->create();
 

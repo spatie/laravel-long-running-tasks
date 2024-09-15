@@ -68,7 +68,7 @@ it('will can handle a task that always fails', function () {
     {
         public function check(LongRunningTaskLogItem $logItem): TaskResult
         {
-            throw new Exception();
+            throw new Exception;
         }
     };
 
@@ -86,7 +86,7 @@ it('can handle a task that will recover', function () {
         public function check(LongRunningTaskLogItem $logItem): TaskResult
         {
             if ($logItem->run_count < 3) {
-                throw new Exception();
+                throw new Exception;
             }
 
             return TaskResult::StopChecking;

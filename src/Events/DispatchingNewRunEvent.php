@@ -6,8 +6,5 @@ use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
 
 class DispatchingNewRunEvent
 {
-    public function __construct(public LongRunningTaskLogItem $longRunningTaskLogItem)
-    {
-
-    }
+    public function __construct(public LongRunningTaskLogItem $longRunningTaskLogItem) {}
 }

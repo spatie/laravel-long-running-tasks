@@ -23,10 +23,7 @@ class RunLongRunningTaskJob implements ShouldBeUniqueUntilProcessing, ShouldQueu
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(public LongRunningTaskLogItem $longRunningTaskLogItem)
-    {
-
-    }
+    public function __construct(public LongRunningTaskLogItem $longRunningTaskLogItem) {}
 
     public function handle()
     {

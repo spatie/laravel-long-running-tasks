@@ -28,5 +28,4 @@ class StandardBackoffCheckStrategy implements CheckStrategy
             ? $frequencies[count($frequencies) - 1]
             : $frequencies[($logItem->attempt % count($frequencies)) - 1];
     }
-
 }
