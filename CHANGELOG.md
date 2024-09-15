@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-long-running-tasks` will be documented in this file.
 
+## 0.0.4 - 2024-09-15
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/laravel-long-running-tasks/pull/6
+* Add task check strategies by @patinthehat in https://github.com/spatie/laravel-long-running-tasks/pull/7
+
+### New Contributors
+
+* @patinthehat made their first contribution in https://github.com/spatie/laravel-long-running-tasks/pull/7
+
+**Full Changelog**: https://github.com/spatie/laravel-long-running-tasks/compare/0.0.3...0.0.4
+
 ## 0.0.3 - 2024-05-14
 
 ### What's Changed
