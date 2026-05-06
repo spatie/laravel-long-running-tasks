@@ -1,5 +1,9 @@
 <?php
 
+use Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob;
+use Spatie\LongRunningTasks\Models\LongRunningTaskLogItem;
+use Spatie\LongRunningTasks\Strategies\DefaultCheckStrategy;
+
 return [
     /*
      * Behind the scenes, this packages use a queue to call tasks.
@@ -24,7 +28,7 @@ return [
      * - `ExponentialBackoffCheckStrategy` will check the task every `LongRunningTaskLogItem::check_frequency_in_seconds` seconds,
      *   but will increase the frequency exponentially with each attempt, up to a maximum of 6 times the original frequency.
      */
-    'default_check_strategy_class' => Spatie\LongRunningTasks\Strategies\DefaultCheckStrategy::class,
+    'default_check_strategy_class' => DefaultCheckStrategy::class,
 
     /*
      * When a task is not completed in this amount of time,
@@ -36,10 +40,10 @@ return [
      * The model that will be used by default to track
      * the status of all tasks.
      */
-    'log_model' => Spatie\LongRunningTasks\Models\LongRunningTaskLogItem::class,
+    'log_model' => LongRunningTaskLogItem::class,
 
     /*
      * The job responsible for calling tasks.
      */
-    'task_job' => Spatie\LongRunningTasks\Jobs\RunLongRunningTaskJob::class,
+    'task_job' => RunLongRunningTaskJob::class,
 ];

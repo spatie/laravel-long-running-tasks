@@ -75,7 +75,7 @@ it('will can handle a task that always fails', function () {
     $task->start();
 
     expect(LongRunningTaskLogItem::first())
-        ->status->toBe(LogitemStatus::Failed)
+        ->status->toBe(LogItemStatus::Failed)
         ->run_count->toBe(1)
         ->latest_exception->toHaveKeys(['message', 'trace']);
 });
@@ -101,7 +101,7 @@ it('can handle a task that will recover', function () {
     $task->start();
 
     expect(LongRunningTaskLogItem::first())
-        ->status->toBe(LogitemStatus::Completed)
+        ->status->toBe(LogItemStatus::Completed)
         ->run_count->toBe(3)
         ->latest_exception->toBeNull();
 });
@@ -120,7 +120,7 @@ it('will stop a task that would run forever', function () {
     $task->start();
 
     expect(LongRunningTaskLogItem::first())
-        ->status->toBe(LogitemStatus::DidNotComplete)
+        ->status->toBe(LogItemStatus::DidNotComplete)
         ->run_count->toBeGreaterThan(1);
 });
 
