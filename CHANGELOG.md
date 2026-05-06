@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-long-running-tasks` will be documented in this file.
 
+## 1.1.0 - 2026-05-06
+
+### What's Changed
+
+- Add Laravel 13 support
+- Upgrade to Pest 4
+- Drop PHP 8.2 and Laravel 10 (not supported by Pest 4)
+- Drop `spatie/laravel-ray` from dev dependencies
+
 ## 1.0.0 - 2025-03-27
 
 ### What's Changed
