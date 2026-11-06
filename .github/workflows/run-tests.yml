@@ -9,12 +9,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 5
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.5, 8.4, 8.3]
-        laravel: [11.*, 12.*, 13.*]
+        php: [8.6, 8.5, 8.4, 8.3]
+        # Laravel 11 releases are blocked by Composer security advisories.
+        laravel: [12.*, 13.*]
         stability: [prefer-stable]
+        exclude:
+          # PHP 8.6 needs Pest 5 / Symfony Process 8.1; Testbench 10 requires Process 7.
+          - php: 8.6
+            laravel: 12.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -43,4 +48,4 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: vendor/bin/pest --ci
+        run: vendor/bin/pest --ci --display-deprecations
